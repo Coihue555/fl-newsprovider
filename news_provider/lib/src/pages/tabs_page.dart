@@ -55,8 +55,8 @@ class _Paginas extends StatelessWidget {
     return PageView(
       controller: navegacionModel.pageController,
       physics: const NeverScrollableScrollPhysics(),
-      children: const [
-        Tab1Screen(),
+      children: [
+        const Tab1Screen(),
         Tab2Screen(),
       ],
     );

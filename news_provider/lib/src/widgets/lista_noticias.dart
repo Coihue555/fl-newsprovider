@@ -70,7 +70,7 @@ class _TarjetaBotones extends StatelessWidget {
           const SizedBox(width: 10),
           RawMaterialButton(
             onPressed: ( ){},
-            fillColor: Color.fromARGB(255, 226, 87, 22),
+            fillColor: const Color.fromARGB(255, 226, 87, 22),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: const Icon(Icons.share),
           ),
