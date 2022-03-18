@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_provider/src/models/news_models.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class ListaNoticias extends StatelessWidget {
 
@@ -112,11 +111,19 @@ class _TarjetaImagen extends StatelessWidget {
         borderRadius: const BorderRadius.only( topLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
         child: Container(
           child: ( noticia.urlToImage != null)
+          // ? FadeInImage(
+          //     placeholder: const AssetImage('assets/img/giphy.gif'),
+          //     image: NetworkImage(noticia.urlToImage!),
+          //   )
+          // : const Image(image: AssetImage('assets/img/no-image.png'), )
           ? FadeInImage(
+              imageErrorBuilder: (context, error, stackTrace) {
+                return const Text('   Image not load   ', style: TextStyle(fontSize: 25,),);
+                    },
               placeholder: const AssetImage('assets/img/giphy.gif'),
               image: NetworkImage(noticia.urlToImage!),
             )
-          : const Image(image: AssetImage('assets/img/no-image.png'), )
+          : const Image(image: AssetImage('assets/img/no-image.png'),)
         ),
       ),
     );
