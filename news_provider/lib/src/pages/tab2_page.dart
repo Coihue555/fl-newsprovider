@@ -31,13 +31,16 @@ class _ListaCategorias extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemCount: categories.length,
       itemBuilder: (BuildContext context, int index){
+
+        final cName = categories[index].name;
+
         return Padding(
           padding: const EdgeInsets.all(8),
           child: Column(
             children: [
               _CategoryButton(categories[index]),
               const SizedBox(height: 5),
-              Text(categories[index].name)
+              Text('${}')
             ],
           ),
         );
@@ -53,6 +56,23 @@ class _CategoryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Icon(categoria.icon);
+    return GestureDetector(
+      onTap: (() {
+        print('Hello friend');
+      }),
+      child: Container(
+        width: 40,
+        height: 40,
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.white,
+        ),
+        child: Icon(
+          categoria.icon,
+          color: Colors.black54
+        ),
+      ),
+    );
   }
 }
