@@ -115,7 +115,7 @@ class _TarjetaImagen extends StatelessWidget {
               placeholder: const AssetImage('assets/img/giphy.gif'),
               image: NetworkImage(noticia.urlToImage!),
             )
-          : const Image(image: AssetImage('assets/img/no-image.png'))
+          : const Image(image: AssetImage('assets/img/no-image.png'), )
         ),
       ),
     );
