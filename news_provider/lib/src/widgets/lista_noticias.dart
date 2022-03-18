@@ -30,14 +30,68 @@ class _Noticia extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _TarjetaTopBar(noticia, index),
+    return Container(
+      color: const Color.fromARGB(255, 46, 52, 75),
+      child: Column(
+        children: [
+          _TarjetaTopBar(noticia, index),
 
-        _TarjetaTitulo( noticia ),
+          _TarjetaTitulo( noticia ),
 
-        _TarjetaImagen( noticia ),
-      ],
+          _TarjetaImagen( noticia ),
+
+          _TarjetaBody(noticia),
+
+          _TarjetaBotones(),
+
+          const SizedBox(height: 10),
+          const Divider(),
+        ],
+      ),
+    );
+  }
+}
+
+
+class _TarjetaBotones extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          RawMaterialButton(
+            onPressed: ( ){},
+            fillColor: Colors.indigoAccent,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            child: const Icon(Icons.star_border),
+          ),
+          const SizedBox(width: 10),
+          RawMaterialButton(
+            onPressed: ( ){},
+            fillColor: Color.fromARGB(255, 226, 87, 22),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            child: const Icon(Icons.share),
+          ),
+
+        ],
+      ),
+    );
+  }
+}
+
+class _TarjetaBody extends StatelessWidget {
+
+  final Article noticia;
+
+  const _TarjetaBody( this.noticia );
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Text( (noticia.description != null) ? noticia.description! : ''),
     );
   }
 }
@@ -52,7 +106,18 @@ class _TarjetaImagen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: const Text('Hello friend'),
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only( topLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
+        child: Container(
+          child: ( noticia.urlToImage != null)
+          ? FadeInImage(
+              placeholder: const AssetImage('assets/img/giphy.gif'),
+              image: NetworkImage(noticia.urlToImage!),
+            )
+          : const Image(image: AssetImage('assets/img/no-image.png'))
+        ),
+      ),
     );
   }
 }
