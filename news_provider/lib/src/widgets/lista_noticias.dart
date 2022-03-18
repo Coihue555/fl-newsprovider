@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_provider/src/models/news_models.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ListaNoticias extends StatelessWidget {
 
